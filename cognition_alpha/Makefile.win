@@ -1,0 +1,221 @@
+# Project: Cognition
+# Makefile created by Dev-C++ 4.9.8.0
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = shared/shared_library.o shared/shared_mathlib.o cognition/base_bind.o cognition/base_bitstream.o cognition/base_command.o cognition/base_filelog.o cognition/base_memory_debug.o cognition/base_memory_release.o cognition/base_variable.o cognition/dr_camera.o cognition/dr_console.o cognition/dr_draw.o cognition/dr_entity.o cognition/dr_foreground.o cognition/dr_light.o cognition/dr_loading.o cognition/dr_misc.o cognition/dr_transparent.o cognition/dr_window.o cognition/dr_world.o cognition/game_entity.o cognition/game_foreground.o cognition/game_game.o cognition/game_particlesys.o cognition/game_world.o cognition/lib_filesys.o cognition/lib_parse.o cognition/lib_rng.o cognition/linked_list.o cognition/media_bitmap.o cognition/media_colormap.o cognition/media_image.o cognition/media_jpeg.o cognition/media_model.o cognition/media_moo.o cognition/media_mp3.o cognition/media_shader.o cognition/media_targa.o cognition/media_wave.o cognition/sal_display_win.o cognition/sal_input_win.o cognition/sal_input_win_di.o cognition/sal_input_win_win32.o cognition/sal_module_win.o cognition/sal_network_win.o cognition/sal_opengl_win.o cognition/sal_sound_win.o cognition/sal_sound_win_ds.o cognition/sal_startlog_win.o cognition/sal_system_win.o cognition/sal_timesys_bsd.o cognition/sal_timesys_linux.o cognition/sal_timesys_win.o cognition/shared_library.o cognition/shared_mathlib.o cognition/sv_collision.o cognition/sv_console.o cognition/sv_engine.o cognition/sv_mouse.o cognition/sv_music.o cognition/sv_widget_button.o cognition/sv_widget_pixmap.o cognition/sv_widget_textedit.o cognition/sv_widget_textlabel.o cognition/sv_window.o $(RES)
+LINKOBJ  = shared/shared_library.o shared/shared_mathlib.o cognition/base_bind.o cognition/base_bitstream.o cognition/base_command.o cognition/base_filelog.o cognition/base_memory_debug.o cognition/base_memory_release.o cognition/base_variable.o cognition/dr_camera.o cognition/dr_console.o cognition/dr_draw.o cognition/dr_entity.o cognition/dr_foreground.o cognition/dr_light.o cognition/dr_loading.o cognition/dr_misc.o cognition/dr_transparent.o cognition/dr_window.o cognition/dr_world.o cognition/game_entity.o cognition/game_foreground.o cognition/game_game.o cognition/game_particlesys.o cognition/game_world.o cognition/lib_filesys.o cognition/lib_parse.o cognition/lib_rng.o cognition/linked_list.o cognition/media_bitmap.o cognition/media_colormap.o cognition/media_image.o cognition/media_jpeg.o cognition/media_model.o cognition/media_moo.o cognition/media_mp3.o cognition/media_shader.o cognition/media_targa.o cognition/media_wave.o cognition/sal_display_win.o cognition/sal_input_win.o cognition/sal_input_win_di.o cognition/sal_input_win_win32.o cognition/sal_module_win.o cognition/sal_network_win.o cognition/sal_opengl_win.o cognition/sal_sound_win.o cognition/sal_sound_win_ds.o cognition/sal_startlog_win.o cognition/sal_system_win.o cognition/sal_timesys_bsd.o cognition/sal_timesys_linux.o cognition/sal_timesys_win.o cognition/shared_library.o cognition/shared_mathlib.o cognition/sv_collision.o cognition/sv_console.o cognition/sv_engine.o cognition/sv_mouse.o cognition/sv_music.o cognition/sv_widget_button.o cognition/sv_widget_pixmap.o cognition/sv_widget_textedit.o cognition/sv_widget_textlabel.o cognition/sv_window.o $(RES)
+LIBS =  -L"C:/Program Files/Dev-Cpp/lib" -mwindows 
+INCS =  -I"C:/Program Files/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Program Files/Dev-Cpp/include/c++"  -I"C:/Program Files/Dev-Cpp/include/c++/mingw32"  -I"C:/Program Files/Dev-Cpp/include/c++/backward"  -I"C:/Program Files/Dev-Cpp/include" 
+BIN  = Cognition.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS = $(INCS) 
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before Cognition.exe all-after
+
+
+clean: clean-custom
+	rm -f $(OBJ) $(BIN)
+
+$(BIN): $(LINKOBJ)
+	$(CC) $(LINKOBJ) -o "Cognition.exe" $(LIBS)
+
+shared/shared_library.o: shared/shared_library.c
+	$(CC) -c shared/shared_library.c -o shared/shared_library.o $(CFLAGS)
+
+shared/shared_mathlib.o: shared/shared_mathlib.c
+	$(CC) -c shared/shared_mathlib.c -o shared/shared_mathlib.o $(CFLAGS)
+
+cognition/base_bind.o: cognition/base_bind.c
+	$(CC) -c cognition/base_bind.c -o cognition/base_bind.o $(CFLAGS)
+
+cognition/base_bitstream.o: cognition/base_bitstream.c
+	$(CC) -c cognition/base_bitstream.c -o cognition/base_bitstream.o $(CFLAGS)
+
+cognition/base_command.o: cognition/base_command.c
+	$(CC) -c cognition/base_command.c -o cognition/base_command.o $(CFLAGS)
+
+cognition/base_filelog.o: cognition/base_filelog.c
+	$(CC) -c cognition/base_filelog.c -o cognition/base_filelog.o $(CFLAGS)
+
+cognition/base_memory_debug.o: cognition/base_memory_debug.c
+	$(CC) -c cognition/base_memory_debug.c -o cognition/base_memory_debug.o $(CFLAGS)
+
+cognition/base_memory_release.o: cognition/base_memory_release.c
+	$(CC) -c cognition/base_memory_release.c -o cognition/base_memory_release.o $(CFLAGS)
+
+cognition/base_variable.o: cognition/base_variable.c
+	$(CC) -c cognition/base_variable.c -o cognition/base_variable.o $(CFLAGS)
+
+cognition/dr_camera.o: cognition/dr_camera.c
+	$(CC) -c cognition/dr_camera.c -o cognition/dr_camera.o $(CFLAGS)
+
+cognition/dr_console.o: cognition/dr_console.c
+	$(CC) -c cognition/dr_console.c -o cognition/dr_console.o $(CFLAGS)
+
+cognition/dr_draw.o: cognition/dr_draw.c
+	$(CC) -c cognition/dr_draw.c -o cognition/dr_draw.o $(CFLAGS)
+
+cognition/dr_entity.o: cognition/dr_entity.c
+	$(CC) -c cognition/dr_entity.c -o cognition/dr_entity.o $(CFLAGS)
+
+cognition/dr_foreground.o: cognition/dr_foreground.c
+	$(CC) -c cognition/dr_foreground.c -o cognition/dr_foreground.o $(CFLAGS)
+
+cognition/dr_light.o: cognition/dr_light.c
+	$(CC) -c cognition/dr_light.c -o cognition/dr_light.o $(CFLAGS)
+
+cognition/dr_loading.o: cognition/dr_loading.c
+	$(CC) -c cognition/dr_loading.c -o cognition/dr_loading.o $(CFLAGS)
+
+cognition/dr_misc.o: cognition/dr_misc.c
+	$(CC) -c cognition/dr_misc.c -o cognition/dr_misc.o $(CFLAGS)
+
+cognition/dr_transparent.o: cognition/dr_transparent.c
+	$(CC) -c cognition/dr_transparent.c -o cognition/dr_transparent.o $(CFLAGS)
+
+cognition/dr_window.o: cognition/dr_window.c
+	$(CC) -c cognition/dr_window.c -o cognition/dr_window.o $(CFLAGS)
+
+cognition/dr_world.o: cognition/dr_world.c
+	$(CC) -c cognition/dr_world.c -o cognition/dr_world.o $(CFLAGS)
+
+cognition/game_entity.o: cognition/game_entity.c
+	$(CC) -c cognition/game_entity.c -o cognition/game_entity.o $(CFLAGS)
+
+cognition/game_foreground.o: cognition/game_foreground.c
+	$(CC) -c cognition/game_foreground.c -o cognition/game_foreground.o $(CFLAGS)
+
+cognition/game_game.o: cognition/game_game.c
+	$(CC) -c cognition/game_game.c -o cognition/game_game.o $(CFLAGS)
+
+cognition/game_particlesys.o: cognition/game_particlesys.c
+	$(CC) -c cognition/game_particlesys.c -o cognition/game_particlesys.o $(CFLAGS)
+
+cognition/game_world.o: cognition/game_world.c
+	$(CC) -c cognition/game_world.c -o cognition/game_world.o $(CFLAGS)
+
+cognition/lib_filesys.o: cognition/lib_filesys.c
+	$(CC) -c cognition/lib_filesys.c -o cognition/lib_filesys.o $(CFLAGS)
+
+cognition/lib_parse.o: cognition/lib_parse.c
+	$(CC) -c cognition/lib_parse.c -o cognition/lib_parse.o $(CFLAGS)
+
+cognition/lib_rng.o: cognition/lib_rng.c
+	$(CC) -c cognition/lib_rng.c -o cognition/lib_rng.o $(CFLAGS)
+
+cognition/linked_list.o: cognition/linked_list.c
+	$(CC) -c cognition/linked_list.c -o cognition/linked_list.o $(CFLAGS)
+
+cognition/media_bitmap.o: cognition/media_bitmap.c
+	$(CC) -c cognition/media_bitmap.c -o cognition/media_bitmap.o $(CFLAGS)
+
+cognition/media_colormap.o: cognition/media_colormap.c
+	$(CC) -c cognition/media_colormap.c -o cognition/media_colormap.o $(CFLAGS)
+
+cognition/media_image.o: cognition/media_image.c
+	$(CC) -c cognition/media_image.c -o cognition/media_image.o $(CFLAGS)
+
+cognition/media_jpeg.o: cognition/media_jpeg.c
+	$(CC) -c cognition/media_jpeg.c -o cognition/media_jpeg.o $(CFLAGS)
+
+cognition/media_model.o: cognition/media_model.c
+	$(CC) -c cognition/media_model.c -o cognition/media_model.o $(CFLAGS)
+
+cognition/media_moo.o: cognition/media_moo.c
+	$(CC) -c cognition/media_moo.c -o cognition/media_moo.o $(CFLAGS)
+
+cognition/media_mp3.o: cognition/media_mp3.c
+	$(CC) -c cognition/media_mp3.c -o cognition/media_mp3.o $(CFLAGS)
+
+cognition/media_shader.o: cognition/media_shader.c
+	$(CC) -c cognition/media_shader.c -o cognition/media_shader.o $(CFLAGS)
+
+cognition/media_targa.o: cognition/media_targa.c
+	$(CC) -c cognition/media_targa.c -o cognition/media_targa.o $(CFLAGS)
+
+cognition/media_wave.o: cognition/media_wave.c
+	$(CC) -c cognition/media_wave.c -o cognition/media_wave.o $(CFLAGS)
+
+cognition/sal_display_win.o: cognition/sal_display_win.c
+	$(CC) -c cognition/sal_display_win.c -o cognition/sal_display_win.o $(CFLAGS)
+
+cognition/sal_input_win.o: cognition/sal_input_win.c
+	$(CC) -c cognition/sal_input_win.c -o cognition/sal_input_win.o $(CFLAGS)
+
+cognition/sal_input_win_di.o: cognition/sal_input_win_di.c
+	$(CC) -c cognition/sal_input_win_di.c -o cognition/sal_input_win_di.o $(CFLAGS)
+
+cognition/sal_input_win_win32.o: cognition/sal_input_win_win32.c
+	$(CC) -c cognition/sal_input_win_win32.c -o cognition/sal_input_win_win32.o $(CFLAGS)
+
+cognition/sal_module_win.o: cognition/sal_module_win.c
+	$(CC) -c cognition/sal_module_win.c -o cognition/sal_module_win.o $(CFLAGS)
+
+cognition/sal_network_win.o: cognition/sal_network_win.c
+	$(CC) -c cognition/sal_network_win.c -o cognition/sal_network_win.o $(CFLAGS)
+
+cognition/sal_opengl_win.o: cognition/sal_opengl_win.c
+	$(CC) -c cognition/sal_opengl_win.c -o cognition/sal_opengl_win.o $(CFLAGS)
+
+cognition/sal_sound_win.o: cognition/sal_sound_win.c
+	$(CC) -c cognition/sal_sound_win.c -o cognition/sal_sound_win.o $(CFLAGS)
+
+cognition/sal_sound_win_ds.o: cognition/sal_sound_win_ds.c
+	$(CC) -c cognition/sal_sound_win_ds.c -o cognition/sal_sound_win_ds.o $(CFLAGS)
+
+cognition/sal_startlog_win.o: cognition/sal_startlog_win.c
+	$(CC) -c cognition/sal_startlog_win.c -o cognition/sal_startlog_win.o $(CFLAGS)
+
+cognition/sal_system_win.o: cognition/sal_system_win.c
+	$(CC) -c cognition/sal_system_win.c -o cognition/sal_system_win.o $(CFLAGS)
+
+cognition/sal_timesys_bsd.o: cognition/sal_timesys_bsd.c
+	$(CC) -c cognition/sal_timesys_bsd.c -o cognition/sal_timesys_bsd.o $(CFLAGS)
+
+cognition/sal_timesys_linux.o: cognition/sal_timesys_linux.c
+	$(CC) -c cognition/sal_timesys_linux.c -o cognition/sal_timesys_linux.o $(CFLAGS)
+
+cognition/sal_timesys_win.o: cognition/sal_timesys_win.c
+	$(CC) -c cognition/sal_timesys_win.c -o cognition/sal_timesys_win.o $(CFLAGS)
+
+cognition/shared_library.o: cognition/shared_library.c
+	$(CC) -c cognition/shared_library.c -o cognition/shared_library.o $(CFLAGS)
+
+cognition/shared_mathlib.o: cognition/shared_mathlib.c
+	$(CC) -c cognition/shared_mathlib.c -o cognition/shared_mathlib.o $(CFLAGS)
+
+cognition/sv_collision.o: cognition/sv_collision.c
+	$(CC) -c cognition/sv_collision.c -o cognition/sv_collision.o $(CFLAGS)
+
+cognition/sv_console.o: cognition/sv_console.c
+	$(CC) -c cognition/sv_console.c -o cognition/sv_console.o $(CFLAGS)
+
+cognition/sv_engine.o: cognition/sv_engine.c
+	$(CC) -c cognition/sv_engine.c -o cognition/sv_engine.o $(CFLAGS)
+
+cognition/sv_mouse.o: cognition/sv_mouse.c
+	$(CC) -c cognition/sv_mouse.c -o cognition/sv_mouse.o $(CFLAGS)
+
+cognition/sv_music.o: cognition/sv_music.c
+	$(CC) -c cognition/sv_music.c -o cognition/sv_music.o $(CFLAGS)
+
+cognition/sv_widget_button.o: cognition/sv_widget_button.c
+	$(CC) -c cognition/sv_widget_button.c -o cognition/sv_widget_button.o $(CFLAGS)
+
+cognition/sv_widget_pixmap.o: cognition/sv_widget_pixmap.c
+	$(CC) -c cognition/sv_widget_pixmap.c -o cognition/sv_widget_pixmap.o $(CFLAGS)
+
+cognition/sv_widget_textedit.o: cognition/sv_widget_textedit.c
+	$(CC) -c cognition/sv_widget_textedit.c -o cognition/sv_widget_textedit.o $(CFLAGS)
+
+cognition/sv_widget_textlabel.o: cognition/sv_widget_textlabel.c
+	$(CC) -c cognition/sv_widget_textlabel.c -o cognition/sv_widget_textlabel.o $(CFLAGS)
+
+cognition/sv_window.o: cognition/sv_window.c
+	$(CC) -c cognition/sv_window.c -o cognition/sv_window.o $(CFLAGS)

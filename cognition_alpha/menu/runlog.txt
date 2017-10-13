@@ -1,0 +1,153 @@
+---------------------------------
+File Log Opened: Mon Dec 29 16:52:20 2003
+
+Timer System Initialized.
+	Starting tics: 5.59804e-313
+	Tics per Second: 3579545.000000
+	Tics per Millisecond: 3579.545000
+
+Retrieving Operating System Information...
+	Operating System: Unrecognized OS - 
+	Version: 5.2
+	Build: 3790
+
+Retrieving File System Information
+	File System: NTFS
+	Max Component Length: 255
+	Volume Name: 
+	Volume Serial Number: -1196550961
+	Working Directory: C:\Programming\cognition\menu
+	Volume Compressed: 0
+
+
+Seeding Random Number Generator...
+	Seeded with: 10000 iterations
+	Total Time: 0.001 seconds
+
+Initializing the bitstream tracker.
+
+Initializing the Command System...
+Importing variable values from last session...
+Executing commands from file "C:\Programming\cognition\menu\var_states.txt"
+File System Error:  Unable to open file "C:\Programming\cognition\menu\var_states.txt"
+Settings File Failed to Open
+
+Command Line: 
+
+Initializing network and WSA sockets.
+
+Initializing Display Parameters....
+	Windowed: 1
+	Width: 646
+	Height: 505
+ 
+Creating Window: "Cognition"
+Initializing OpenGL Rendering System...
+	Requesting the Device Context for the Render Window.
+	Initializing the Pixel Format Descriptor.
+	Querying OpenGL for the best format.
+	Using Pixel Format #4
+		ColorBits:   32
+		DepthBits:   24
+		StencilBits: 0
+		AccumBits:   0
+	Setting the pixel format.
+	Creating the OpenGL rendering context on the windows device context.
+
+Initializing the rendering context...
+	GL Vendor: NVIDIA Corporation
+	GL Renderer: RIVA TNT2/AGP/3DNOW!
+	GL Version: 1.4.1
+	GL Extensions: GL_ARB_imaging GL_ARB_multitexture GL_ARB_point_parameters GL_ARB_texture_env_add GL_ARB_texture_mirrored_repeat GL_ARB_transpose_matrix GL_ARB_vertex_buffer_object GL_ARB_window_pos GL_EXT_texture_env_add GL_EXT_abgr GL_EXT_bgra GL_EXT_compiled_vertex_array GL_EXT_draw_range_elements GL_EXT_fog_coord GL_EXT_multi_draw_arrays GL_EXT_packed_pixels GL_EXT_point_parameters GL_EXT_rescale_normal GL_EXT_secondary_color GL_EXT_separate_specular_color GL_EXT_stencil_wrap GL_EXT_texture_edge_clamp GL_EXT_texture_env_combine GL_EXT_texture_lod_bias GL_EXT_texture_object GL_EXT_vertex_array GL_IBM_rasterpos_clip GL_IBM_texture_mirrored_repeat GL_KTX_buffer_region GL_NV_blend_square GL_NV_fog_distance GL_NV_packed_depth_stencil GL_NV_texgen_reflection GL_NV_texture_env_combine4 GL_SGIS_multitexture GL_SUN_slice_accum GL_WIN_swap_hint WGL_EXT_swap_control 
+	Point Size Range:  [ 1.000, 63.375 ] with a granularity of 0.125
+	Line Width Range:  [ 0.500, 10.000 ] with a granularity of 0.125
+	Maximum Texture Size:  2048
+
+Initializing Direct Sound...
+	Success.
+
+Initializing Input.
+	Initializing Direct Input...
+		Success!
+	Using DirectInput.
+
+Initializing Mouse System...
+
+Loading jpeg image from "C:\Programming\cognition\menu\main\colormaps\cursor24.jpg"
+File System Error:  Unable to open file "C:\Programming\cognition\menu\main\colormaps\cursor24.jpg"
+JPEG Load Error:  Unable to open path: "C:\Programming\cognition\menu\main\colormaps\cursor24.jpg"
+Image Load Failed - Unable to load Image Data
+Colormap LoadFromFiles Failed:  image load for cursor24 failed.
+	Done
+
+Initializing Console System...
+
+Loading jpeg image from "C:\Programming\cognition\menu\main\colormaps\console_back.jpg"
+File System Error:  Unable to open file "C:\Programming\cognition\menu\main\colormaps\console_back.jpg"
+JPEG Load Error:  Unable to open path: "C:\Programming\cognition\menu\main\colormaps\console_back.jpg"
+Image Load Failed - Unable to load Image Data
+Colormap LoadFromFiles Failed:  image load for console_back failed.
+Console Init Error:  Load Console Background failed.
+
+Unloading Menu Module...
+	Menu System Terminated Successfully.
+
+Unloading Client Module...
+	Client System Terminated Successfully.
+
+Unloading Server Module...
+	Server System Terminated Successfully.
+Draw System Error:  Assert Failed in UnloadDefaultSkybox:  entDefaultSkybox is NULL
+
+Terminating Model System...
+
+Terminating Moo System...
+
+Terminating Console...
+Colormap Unload Assert Failed:  cm is NULL.
+Colormap Unload Assert Failed:  cm is NULL.
+Colormap Unload Assert Failed:  cm is NULL.
+Colormap Unload Assert Failed:  cm is NULL.
+Colormap Unload Assert Failed:  cm is NULL.
+
+Terminating Mouse System...
+	Done.
+
+Terminating Direct Sound...
+	Success..
+
+Terminating Input System.
+	Closing Direct Input.
+
+Terminating Direct Input.
+	Success...
+
+Terminating OpenGL...
+	Wiggle Render Context Removed...
+	Wiggle Render Context Deleted...
+	Windows Device Context Released...
+	Closing Render Window...
+	Returning Display Settings to their previous values...
+
+Terminating network system and WSA sockets.
+
+Closing Variable System...
+	Opening "var_states.txt" for writting...
+	Writting variable states...
+	All variables successfully exported to file "C:\Programming\cognition\menu\var_states.txt"
+
+Terminating the Command System...
+
+Terminating the bitstream system.
+
+Terminating File System...
+	Releasing file system information...
+	File System Terminated Successfully.
+
+Terminating Memory System...
+	Freed 0 stray blocks - 0 bytes recovered
+	Memory System Terminated Successfully.
+ 
+File Log Closed: Mon Dec 29 16:52:21 2003
+
+---------------------------------

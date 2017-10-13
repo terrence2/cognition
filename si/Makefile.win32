@@ -1,0 +1,56 @@
+# Makefile Windows
+# for project Cognition:  toplevel makefile
+
+# GLOBAL MAKE OPTIONS
+!INCLUDE <MAKEFILE.WIN32.GLB>
+
+rls ::
+	$(CD) shared
+	$(NMAKE) /F Makefile.win32 all
+	$(CD) ..\client
+	$(NMAKE) /F Makefile.win32 all
+	$(CD) ..\server
+	$(NMAKE) /F Makefile.win32 all
+	$(CD) ..\menu
+	$(NMAKE) /F Makefile.win32 all
+	$(CD) ..\cognition
+	$(NMAKE) /F Makefile.win32 all
+
+dbg ::  
+	$(CD) shared
+	$(NMAKE) /F Makefile.win32 DEBUG=1 all
+	$(CD) ..\client
+	$(NMAKE) /F Makefile.win32 DEBUG=1 all
+	$(CD) ..\server
+	$(NMAKE) /F Makefile.win32 DEBUG=1 all
+	$(CD) ..\menu
+	$(NMAKE) /F Makefile.win32 DEBUG=1 all
+	$(CD) ..\cognition
+	$(NMAKE) /F Makefile.win32 DEBUG=1 all
+	
+all :: 
+	$(NMAKE) /F Makefile.win32 dbg
+
+# CLEAN DIRECTORIES
+clean: 
+	$(CD) shared
+	$(NMAKE) /F Makefile.win32 clean
+	$(CD) ..
+	$(CD) client
+	$(NMAKE) /F Makefile.win32 clean
+	$(CD) ..
+	$(CD) server
+	$(NMAKE) /F Makefile.win32 clean
+	$(CD) ..
+	$(CD) menu
+	$(NMAKE) /F Makefile.win32 clean
+	$(CD) ..
+	$(CD) cognition
+	$(NMAKE) /F Makefile.win32 clean
+	$(CD) ..
+	$(RM) cognition.exe
+	$(CD) main
+	$(RM) menu.dll
+	$(RM) server.dll
+	$(RM) client.dll
+	

@@ -1,0 +1,131 @@
+# Makefile Windows
+# for project Cognition:  Menu Module
+
+# GLOBAL OPTIONS
+!INCLUDE <..\MAKEFILE.WIN32.GLB>
+
+# COMMAND OPTIONS
+LINKED_LIBS=user32.lib gdi32.lib
+
+# COMMAND LINE OPTIONS
+CL_RLS=$(INCLUDE_PATHS) /c /ML /D "RELEASE" /D "WIN32" /D "_WIN32" /O2 /Op /Oi /Og /Ot /G6 /GL /W3 /GD -GX /V$(VERSION) /Zm200 
+LNK_RLS=/VERSION:$(VERSION) /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF=4 /OPT:NOWIN98 /MACHINE:X86 /INCREMENTAL:NO /LTCG:STATUS $(LIB_PATHS)
+CL_DBG=$(INCLUDE_PATHS) /c /MLd /D "VC98" /D "DEBUG" /D "WIN32" /D "_WIN32" /Od /Op /W3 /GD -GX /V$(VERSION) /Zm200 
+LNK_DBG=/VERSION:$(VERSION) /SUBSYSTEM:WINDOWS /OPT:NOREF /OPT:NOICF /OPT:NOWIN98 /MACHINE:X86 /INCREMENTAL:YES /DEBUG $(LIB_PATHS)
+
+!IFDEF DEBUG
+MENU_CL=$(CL_DBG)
+MENU_LNK=$(LNK_DBG)
+!ELSE IFNDEF DEBUG
+MENU_CL=$(CL_RLS)
+MENU_LNK=$(LNK_RLS)
+!ENDIF
+
+# MODULES
+MODULES_SHARED= 	shared_queue.obj \
+					shared_mathlib.obj \
+					shared_library.obj 
+
+MODULES_MENU=		Button.obj \
+					CheckButton.obj \
+					CogMenu.obj \
+					OptionScreenRoot.obj \
+					Pixmap.obj \
+					RadioButton.obj \
+					RadioButtonGroup.obj \
+					RootScreen.obj \
+					Screen.obj \
+					Slider.obj \
+					SingleScreen.obj \
+					SingleScreen2D.obj \
+					Single2DOptionsScreen.obj \
+					SingleScreen3D.obj \
+					Spinner.obj \
+					TextEdit.obj \
+					TextLabel.obj \
+					Widget.obj \
+					YesNoDialog.obj
+					
+
+# GLOBAL BUILD DEPENDENCIES
+MENU_GLOBALS=	CogMenuGlobal.h $(SHARED_DEPS)
+
+all: menu.dll
+	;
+
+menu.dll: $(MODULES_MENU)
+	$(LINK) /DLL /DEF:menu.def $(MENU_LNK)  /OUT:menu.dll $(MODULES_MENU) $(MODULES_SHARED)
+	$(NMAKE) /F Makefile.win32 test_install
+
+test_install: 
+	$(RM) ..\main\menu.dll
+	$(CP) menu.dll ..\main\menu.dll
+
+# MENU
+Button.obj: Button.cpp Button.h $(MENU_GLOBALS)
+	$(CL) $(MENU_CL) /FoButton.obj Button.cpp
+
+CheckButton.obj: CheckButton.cpp CheckButton.h $(MENU_GLOBALS)
+	$(CL) $(MENU_CL) /FoCheckButton.obj CheckButton.cpp
+	
+CogMenu.obj: CogMenu.cpp CogMenu.h $(MENU_GLOBALS)
+	$(CL) $(MENU_CL) /FoCogMenu.obj CogMenu.cpp
+
+OptionScreenRoot.obj: OptionScreenRoot.cpp OptionScreenRoot.h $(MENU_GLOBALS)
+	$(CL) $(MENU_CL) /FoOptionScreenRoot.obj OptionScreenRoot.cpp
+
+Pixmap.obj: Pixmap.cpp Pixmap.h $(MENU_GLOBALS)
+	$(CL) $(MENU_CL) /FoPixmap.obj Pixmap.cpp
+
+RadioButton.obj: RadioButton.cpp RadioButton.h $(MENU_GLOBALS)
+	$(CL) $(MENU_CL) /FoRadioButton.obj RadioButton.cpp
+
+RadioButtonGroup.obj: RadioButtonGroup.cpp RadioButtonGroup.h $(MENU_GLOBALS)
+	$(CL) $(MENU_CL) /FoRadioButtonGroup.obj RadioButtonGroup.cpp
+
+RootScreen.obj: RootScreen.cpp RootScreen.h $(MENU_GLOBALS)
+	$(CL) $(MENU_CL) /FoRootScreen.obj RootScreen.cpp
+
+Screen.obj: Screen.cpp Screen.h $(MENU_GLOBALS)
+	$(CL) $(MENU_CL) /FoScreen.obj Screen.cpp
+
+Slider.obj: Slider.cpp Slider.h $(MENU_GLOBALS)
+	$(CL) $(MENU_CL) /FoSlider.obj Slider.cpp
+	
+SingleScreen.obj: SingleScreen.cpp SingleScreen.h $(MENU_GLOBALS)
+	$(CL) $(MENU_CL) /FoSingleScreen.obj SingleScreen.cpp
+
+SingleScreen2D.obj: SingleScreen2D.cpp SingleScreen2D.h $(MENU_GLOBALS)
+	$(CL) $(MENU_CL) /FoSingleScreen2D.obj SingleScreen2D.cpp
+
+Single2DOptionsScreen.obj: Single2DOptionsScreen.cpp Single2DOptionsScreen.h $(MENU_GLOBALS)
+	$(CL) $(MENU_CL) /FoSingle2DOptionsScreen.obj Single2DOptionsScreen.cpp
+
+SingleScreen3D.obj: SingleScreen3D.cpp SingleScreen3D.h $(MENU_GLOBALS)
+	$(CL) $(MENU_CL) /FoSingleScreen3D.obj SingleScreen3D.cpp
+	
+Spinner.obj: Spinner.cpp Spinner.h $(MENU_GLOBALS)
+	$(CL) $(MENU_CL) /FoSpinner.obj Spinner.cpp
+
+TextEdit.obj: TextEdit.cpp TextEdit.h $(MENU_GLOBALS)
+	$(CL) $(MENU_CL) /FoTextEdit.obj TextEdit.cpp
+	
+TextLabel.obj: TextLabel.cpp TextLabel.h $(MENU_GLOBALS)
+	$(CL) $(MENU_CL) /FoTextLabel.obj TextLabel.cpp
+
+Widget.obj: Widget.cpp Widget.h $(MENU_GLOBALS)
+	$(CL) $(MENU_CL) /FoWidget.obj Widget.cpp
+
+YesNoDialog.obj: YesNoDialog.cpp YesNoDialog.h $(MENU_GLOBALS)
+	$(CL) $(MENU_CL) /FoYesNoDialog.obj YesNoDialog.cpp
+
+# CLEAN DIRECTORIES
+clean: 
+	$(RM) *.obj
+	$(RM) *.o
+	$(RM) *.ilk
+	$(RM) *.exp
+	$(RM) *.lib	
+	$(RM) *.pdb
+	$(RM) menu.dll
+	

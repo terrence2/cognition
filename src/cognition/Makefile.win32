@@ -1,0 +1,298 @@
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Library General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+
+# Makefile Windows
+# for project Cognition:  Engine Module
+
+!INCLUDE <..\MAKEFILE.WIN32.GLB>
+
+# LIB DEPS
+LINKED_LIBS=opengl32.lib glu32.lib user32.lib gdi32.lib Ws2_32.lib dinput8.lib dxguid.lib dsound.lib
+
+# COMMAND LINE OPTIONS
+CL_RLS=$(INCLUDE_PATHS) /c /ML /D "RELEASE" /D "WIN32" /D "_WIN32" /noBool /O2 /Op /Oi /Og /Ot /G6 /GL /W3 /V$(VERSION) /Zm200 
+LNK_RLS=/VERSION:$(VERSION) /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF=4 /OPT:NOWIN98 /MACHINE:X86 /INCREMENTAL:NO /LTCG:STATUS $(LIB_PATHS)
+CL_DBG=$(INCLUDE_PATHS) /c /MLd /D "VC98" /D "DEBUG" /D "WIN32" /D "_WIN32" /Gi /noBool /Od /Op /W3 /V$(VERSION) /Zm200 
+LNK_DBG=/VERSION:$(VERSION) /SUBSYSTEM:WINDOWS /OPT:NOREF /OPT:NOICF /OPT:NOWIN98 /MACHINE:X86 /INCREMENTAL:YES /DEBUG $(LIB_PATHS)
+
+!IFDEF DEBUG
+ENGINE_CL=$(CL_DBG)
+ENGINE_LNK=$(LNK_DBG)
+#MEM_SYSTEM=base_memory_debug.obj
+MEM_SYSTEM=base_memory_release.obj
+!ELSE IFNDEF DEBUG
+ENGINE_CL=$(CL_RLS)
+ENGINE_LNK=$(LNK_RLS)
+MEM_SYSTEM=base_memory_release.obj
+!ENDIF
+
+# MODULES
+MODULES_SHARED= 	shared_queue.obj \
+					shared_mathlib.obj \
+					shared_library.obj 
+
+MODULES_ENGINE=	base_bind.obj \
+					base_bitstream.obj \
+					base_command.obj \
+					base_filelog.obj \
+					$(MEM_SYSTEM) \
+					base_variable.obj \
+					dr_camera.obj \
+					dr_console.obj \
+					dr_draw.obj \
+					dr_entity.obj \
+					dr_light.obj \
+					dr_loading.obj \
+					dr_menu.obj \
+					dr_misc.obj \
+					dr_skybox.obj \
+					dr_text.obj \
+					dr_transparent.obj \
+					dr_vbo.obj \
+					dr_world.obj \
+					game_background.obj \
+					game_entity.obj \
+					game_game.obj \
+					game_particlesys.obj \
+					game_world.obj \
+					lib_filesys.obj \
+					lib_parse.obj \
+					lib_rng.obj \
+					linked_list.obj \
+					media_bitmap.obj \
+					media_colormap.obj \
+					media_image.obj \
+					media_jpeg.obj \
+					media_model.obj \
+					media_moo.obj \
+					media_mp3.obj \
+					media_shader.obj \
+					media_targa.obj \
+					media_wave.obj \
+					sal_display_win.obj \
+					sal_input_win.obj \
+					sal_input_win_di.obj \
+					sal_input_win_win32.obj \
+					sal_module_win.obj \
+					sal_network_win.obj \
+					sal_opengl_win.obj \
+					sal_sound_win.obj \
+					sal_sound_win_ds.obj \
+					sal_system_win.obj \
+					sal_timesys_win.obj \
+					sv_collision.obj \
+					sv_console.obj \
+					sv_engine.obj \
+					sv_mouse.obj \
+					sv_music.obj 
+
+# GLOBAL BUILD DEPENDENCIES
+ENGINE_GLOBALS=	cog_global.h \
+				cog_structures.h \
+				cog_opengl.h \
+				sv_console.h \
+				linked_list.h \
+				cog_sysdeps.h \
+				$(SHARED_DEPS)
+
+all: cognition.exe
+	;
+
+cognition.exe: $(MODULES_ENGINE)
+	$(LINK) $(ENGINE_LNK) /OUT:cognition.exe $(LINKED_LIBS) $(MODULES_ENGINE) $(MODULES_SHARED)
+	$(RM) ..\cognition.exe
+	$(CP) cognition.exe ..\cognition.exe
+
+# ENGINE
+base_bind.obj: base_bind.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fobase_bind.obj base_bind.c
+	
+base_bitstream.obj:  base_bitstream.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fobase_bitstream.obj base_bitstream.c
+	
+base_command.obj:  base_command.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fobase_command.obj base_command.c
+	
+base_filelog.obj:  base_filelog.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fobase_filelog.obj base_filelog.c
+	
+base_memory_debug.obj:  base_memory_debug.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fobase_memory_debug.obj base_memory_debug.c
+	
+base_memory_release.obj:  base_memory_release.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fobase_memory_release.obj base_memory_release.c
+	
+base_variable.obj:  base_variable.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fobase_variable.obj base_variable.c
+
+dr_camera.obj: dr_camera.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fodr_camera.obj dr_camera.c
+	
+dr_console.obj: dr_console.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fodr_console.obj dr_console.c
+	
+dr_draw.obj: dr_draw.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fodr_draw.obj dr_draw.c
+	
+dr_entity.obj: dr_entity.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fodr_entity.obj dr_entity.c
+
+dr_foreground.obj: dr_foreground.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fodr_foreground.obj dr_foreground.c
+	
+dr_light.obj:  dr_light.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fodr_light.obj dr_light.c
+
+dr_loading.obj:  dr_loading.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fodr_loading.obj dr_loading.c
+
+dr_menu.obj:  dr_menu.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fodr_menu.obj dr_menu.c
+	
+dr_misc.obj:  dr_misc.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fodr_misc.obj dr_misc.c
+
+dr_skybox.obj:  dr_skybox.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fodr_skybox.obj dr_skybox.c
+	
+dr_text.obj:  dr_text.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fodr_text.obj dr_text.c
+	
+dr_transparent.obj:  dr_transparent.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fodr_transparent.obj dr_transparent.c
+
+dr_vbo.obj:  dr_vbo.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fodr_vbo.obj dr_vbo.c
+	
+dr_world.obj:  dr_world.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fodr_world.obj dr_world.c
+
+game_background.obj: game_background.c  $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fogame_background.obj game_background.c 
+	
+game_entity.obj: game_entity.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fogame_entity.obj game_entity.c
+
+game_game.obj: game_game.c $(ENGINE_GLOBALS)
+ 	$(CL) $(ENGINE_CL) /Fogame_game.obj game_game.c
+
+game_particlesys.obj: game_particlesys.c $(ENGINE_GLOBALS)
+ 	$(CL) $(ENGINE_CL) /Fogame_particlesys.obj game_particlesys.c
+
+game_world.obj: game_world.c $(ENGINE_GLOBALS)
+ 	$(CL) $(ENGINE_CL) /Fogame_world.obj game_world.c
+ 
+lib_filesys.obj: lib_filesys.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Folib_filesys.obj lib_filesys.c
+	
+lib_parse.obj: lib_parse.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Folib_parse.obj lib_parse.c
+	
+lib_rng.obj: lib_rng.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Folib_rng.obj lib_rng.c
+
+linked_list.obj: linked_list.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Folinked_list.obj linked_list.c
+
+media_bitmap.obj: media_bitmap.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fomedia_bitmap.obj media_bitmap.c
+	
+media_colormap.obj: media_colormap.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fomedia_colormap.obj media_colormap.c
+	
+media_image.obj:  media_image.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fomedia_image.obj media_image.c
+	
+media_jpeg.obj:  media_jpeg.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fomedia_jpeg.obj media_jpeg.c
+	
+media_model.obj:  media_model.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fomedia_model.obj media_model.c
+	
+media_moo.obj:  media_moo.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fomedia_moo.obj media_moo.c
+	
+media_mp3.obj:  media_mp3.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fomedia_mp3.obj media_mp3.c
+	
+media_shader.obj:  media_shader.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fomedia_shader.obj media_shader.c
+	
+media_targa.obj:  media_targa.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fomedia_targa.obj media_targa.c
+	
+media_wave.obj:  media_wave.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fomedia_wave.obj media_wave.c
+
+sal_display_win.obj: sal_display_win.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fosal_display_win.obj sal_display_win.c
+	
+sal_input_win.obj:  sal_input_win.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fosal_input_win.obj sal_input_win.c
+	
+sal_input_win_di.obj:  sal_input_win_di.c sal_input_win_di.h $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fosal_input_win_di.obj sal_input_win_di.c
+	
+sal_input_win_win32.obj:  sal_input_win_win32.c sal_input_win_win32.h $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fosal_input_win_win32.obj sal_input_win_win32.c
+	
+sal_module_win.obj:  sal_module_win.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fosal_module_win.obj sal_module_win.c
+
+sal_network_win.obj: sal_network_win.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fosal_network_win.obj sal_network_win.c
+	
+sal_opengl_win.obj:  sal_opengl_win.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fosal_opengl_win.obj sal_opengl_win.c
+	
+sal_sound_win.obj:  sal_sound_win.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fosal_sound_win.obj sal_sound_win.c
+	
+sal_sound_win_ds.obj:  sal_sound_win_ds.c sal_sound_win_ds.h $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fosal_sound_win_ds.obj sal_sound_win_ds.c
+	
+sal_startlog_win.obj:  sal_startlog_win.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fosal_startlog_win.obj sal_startlog_win.c
+	
+sal_system_win.obj:  sal_system_win.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fosal_system_win.obj sal_system_win.c
+
+sal_timesys_win.obj:  sal_timesys_win.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fosal_timesys_win.obj sal_timesys_win.c
+	
+sv_collision.obj: sv_collision.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fosv_collision.obj sv_collision.c
+	
+sv_console.obj: sv_console.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fosv_console.obj sv_console.c
+	
+sv_engine.obj: sv_engine.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fosv_engine.obj sv_engine.c
+	
+sv_mouse.obj: sv_mouse.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fosv_mouse.obj sv_mouse.c
+
+sv_music.obj: sv_music.c $(ENGINE_GLOBALS)
+	$(CL) $(ENGINE_CL) /Fosv_music.obj sv_music.c
+
+
+# CLEAN DIRECTORIES
+clean: 
+	$(RM) *.obj
+	$(RM) *.o
+	$(RM) *.ilk
+	$(RM) *.exp
+	$(RM) *.lib
+	$(RM) *.pdb
+	$(RM) Cognition.exe

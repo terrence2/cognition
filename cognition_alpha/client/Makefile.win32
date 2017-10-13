@@ -1,0 +1,79 @@
+# Makefile Windows
+# for project Cognition:  client module
+
+# GLOBAL OPTIONS
+!INCLUDE <..\MAKEFILE.WIN32.GLB>
+
+# COMMAND OPTIONS
+LINKED_LIBS=user32.lib gdi32.lib
+
+# COMMAND LINE OPTIONS
+CL_RLS=$(INCLUDE_PATHS) /c /ML /D "RELEASE" /D "WIN32" /D "_WIN32" /noBool /O2 /Op /Oi /Og /Ot /G6 /GL /W3 /GD /V$(VERSION) /Zm200 
+LNK_RLS=/VERSION:$(VERSION) /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF=4 /OPT:NOWIN98 /MACHINE:X86 /INCREMENTAL:NO /LTCG:STATUS $(LIB_PATHS)
+CL_DBG=$(INCLUDE_PATHS) /c /MLd /D "VC98" /D "DEBUG" /D "WIN32" /D "_WIN32" /noBool /Od /Op /W3 /GD /V$(VERSION) /Zm200 
+LNK_DBG=/VERSION:$(VERSION) /SUBSYSTEM:WINDOWS /OPT:NOREF /OPT:NOICF /OPT:NOWIN98 /MACHINE:X86 /INCREMENTAL:YES /DEBUG $(LIB_PATHS)
+
+!IFDEF DEBUG
+CLIENT_CL=$(CL_DBG)
+CLIENT_LNK=$(LNK_DBG)
+!ELSE IFNDEF DEBUG
+CLIENT_CL=$(CL_RLS)
+CLIENT_LNK=$(LNK_RLS)
+!ENDIF
+
+# MODULES
+MODULES_CLIENT=		cl_foreground.obj \
+					cl_game.obj \
+					cl_main.obj \
+					cl_player.obj \
+					cl_state.obj \
+					cl_world.obj 
+					
+MODULES_SHARED=	shared_queue.obj \
+					shared_library.obj \
+					shared_mathlib.obj
+					
+# GLOBAL BUILD DEPENDENCIES
+CLIENT_GLOBALS=	cl_global.h \
+				$(SHARED_DEPS)
+
+all: client.dll
+	;
+
+client.dll: $(MODULES_CLIENT)
+	$(LINK) /DLL /DEF:client.def $(CLIENT_LNK) /OUT:client.dll $(MODULES_CLIENT) $(MODULES_SHARED)
+	$(NMAKE) /F Makefile.win32 test_install
+
+test_install: 
+	$(RM) ..\main\client.dll
+	$(CP) client.dll ..\main\client.dll
+
+# CLIENT
+cl_foreground.obj: cl_foreground.c $(CLIENT_GLOBALS)
+	$(CL) $(CLIENT_CL) /Focl_foreground.obj cl_foreground.c
+
+cl_main.obj: cl_main.c $(CLIENT_GLOBALS)
+	$(CL) $(CLIENT_CL) /Focl_main.obj cl_main.c
+
+cl_game.obj: cl_game.c $(CLIENT_GLOBALS)
+	$(CL) $(CLIENT_CL) /Focl_game.obj cl_game.c
+
+cl_player.obj: cl_player.c $(CLIENT_GLOBALS)
+	$(CL) $(CLIENT_CL) /Focl_player.obj cl_player.c
+
+cl_state.obj: cl_state.c $(CLIENT_GLOBALS)
+	$(CL) $(CLIENT_CL) /Focl_state.obj cl_state.c
+
+cl_world.obj: cl_world.c $(CLIENT_GLOBALS)
+	$(CL) $(CLIENT_CL) /Focl_world.obj cl_world.c
+
+# CLEAN DIRECTORIES
+clean: 
+	$(RM) *.obj
+	$(RM) *.o
+	$(RM) *.ilk
+	$(RM) *.exp
+	$(RM) *.lib
+	$(RM) *.pdb
+	$(RM) client.dll
+	

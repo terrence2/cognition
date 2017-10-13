@@ -1,0 +1,3 @@
+Note Well:  This directory is not for project includes.  Rather, it contains various needed system include files for certain broken compiler implementations (read VC98).  
+
+At the moment this only contains SGI's extension database reference for 1.4.  If you are running Visual Studio 6 and are missing glext.h, just copy it from here into your compiler's include/GL directory and retry the build.  

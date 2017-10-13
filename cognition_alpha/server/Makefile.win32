@@ -1,0 +1,73 @@
+# Makefile Windows
+# for project Cognition:  Server Module
+
+# GLOBAL OPTIONS
+!INCLUDE <..\MAKEFILE.WIN32.GLB>
+
+# COMMAND OPTIONS
+LINKED_LIBS=user32.lib gdi32.lib
+
+# COMMAND LINE OPTIONS
+CL_RLS=$(INCLUDE_PATHS) /c /ML /D "RELEASE" /D "WIN32" /D "_WIN32" /noBool /O2 /Op /Oi /Og /Ot /G6 /GL /GD /W3 /V$(VERSION) /Zm200 
+LNK_RLS=/VERSION:$(VERSION) /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF=4 /OPT:NOWIN98 /MACHINE:X86 /INCREMENTAL:NO /LTCG:STATUS $(LIB_PATHS)
+CL_DBG=$(INCLUDE_PATHS) /c /MLd /D "VC98" /D "DEBUG" /D "WIN32" /D "_WIN32" /noBool /Od /Op /W3 /GD /V$(VERSION) /Zm200 
+LNK_DBG=/VERSION:$(VERSION) /SUBSYSTEM:WINDOWS /OPT:NOREF /OPT:NOICF /OPT:NOWIN98 /MACHINE:X86 /INCREMENTAL:YES /DEBUG $(LIB_PATHS)
+
+!IFDEF DEBUG
+SERVER_CL=$(CL_DBG)
+SERVER_LNK=$(LNK_DBG)
+!ELSE IFNDEF DEBUG
+SERVER_CL=$(CL_RLS)
+SERVER_LNK=$(LNK_RLS)
+!ENDIF
+
+# MODULES
+MODULES_SHARED= 	shared_queue.obj \
+					shared_mathlib.obj \
+					shared_library.obj 
+
+MODULES_SERVER= 	ser_main.obj \
+					ser_entity.obj \
+					ser_player.obj \
+					ser_state.obj \
+					ser_world.obj 
+
+# GLOBAL BUILD DEPENDENCIES
+SERVER_GLOBALS=	ser_global.h $(SHARED_DEPS)
+
+all: server.dll
+	;
+
+server.dll: $(MODULES_SERVER)
+	$(LINK) /DLL /DEF:server.def $(SERVER_LNK)  /OUT:server.dll $(MODULES_SERVER) $(MODULES_SHARED)
+	$(NMAKE) /F Makefile.win32 test_install
+
+test_install:
+	$(RM) ..\main\server.dll
+	$(CP) server.dll ..\main\server.dll
+
+# SERVER
+ser_entity.obj: ser_entity.c $(SERVER_GLOBALS)
+	$(CL) $(SERVER_CL) /Foser_entity.obj ser_entity.c
+	
+ser_main.obj: ser_main.c $(SERVER_GLOBALS)
+	$(CL) $(SERVER_CL) /Foser_main.obj ser_main.c
+
+ser_player.obj: ser_player.c $(SERVER_GLOBALS)
+	$(CL) $(SERVER_CL) /Foser_player.obj ser_player.c
+	
+ser_state.obj: ser_state.c $(SERVER_GLOBALS)
+	$(CL) $(SERVER_CL) /Foser_state.obj ser_state.c
+
+ser_world.obj: ser_world.c $(SERVER_GLOBALS)
+	$(CL) $(SERVER_CL) /Foser_world.obj ser_world.c
+
+clean:
+	$(RM) *.obj
+	$(RM) *.o
+	$(RM) *.ilk
+	$(RM) *.exp
+	$(RM) *.lib
+	$(RM) *.pdb
+	$(RM) server.dll
+

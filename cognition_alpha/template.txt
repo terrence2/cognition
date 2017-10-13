@@ -1,0 +1,28 @@
+// Cognition
+// .c
+// Created  by Terrence Cole
+
+// Includes
+/////////////
+#include "cog_global.h"
+
+// Definitions
+////////////////
+
+// Local Structures
+/////////////////////
+
+// Global Prototypes
+//////////////////////
+/*
+*/
+
+// Local Prototypes
+/////////////////////
+
+// Local Variables
+////////////////////
+
+// *********** FUNCTIONALITY ***********
+/* ------------
+------------ */
