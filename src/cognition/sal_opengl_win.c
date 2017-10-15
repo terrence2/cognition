@@ -16,6 +16,9 @@
 // .c
 // Created  by Terrence Cole
 
+#ifdef WIN32
+
+
 // Includes
 /////////////
 #include "cog_global.h"
@@ -492,3 +495,5 @@ void gl_FlipBuffers()
 {
 	SwapBuffers( gl_state.window.glDC );
 }
+
+#endif // WIN32

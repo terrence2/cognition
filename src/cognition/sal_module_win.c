@@ -32,6 +32,8 @@
 // .c
 // Created  by Terrence Cole
 
+#ifdef WIN32
+
 // Includes
 /////////////
 #include "cog_global.h"
@@ -353,3 +355,5 @@ void module_CloseServer()
 	con_Print( "\tServer System Terminated Successfully." );
 	eng_LoadingFrame();
 }
+
+#endif // WIN32

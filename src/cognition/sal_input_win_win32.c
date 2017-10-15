@@ -16,6 +16,9 @@
 // sal_input_win_win32.c
 // Created by Terrence Cole
 
+#ifdef WIN32
+
+
 // Includes
 /////////////
 #include "cog_global.h"
@@ -339,3 +342,5 @@ void in_w32_UnhideMouse(void)
 {
     while( ShowCursor( TRUE ) < 0 ) ;
 }
+
+#endif // WIN32

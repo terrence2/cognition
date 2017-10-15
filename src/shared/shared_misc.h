@@ -35,9 +35,9 @@
 #define CLIENT_MODULE_NAME "client.dll"
 #define SERVER_MODULE_NAME "server.dll"
 #else
-#define MENU_MODULE_NAME "./libcognitionmenu.so"
-#define CLIENT_MODULE_NAME "./libcognitionclient.so"
-#define SERVER_MODULE_NAME "./libcognitionserver.so"
+#define MENU_MODULE_NAME "libmenu.so"
+#define CLIENT_MODULE_NAME "libclient.so"
+#define SERVER_MODULE_NAME "libserver.so"
 #endif
 
 // image system

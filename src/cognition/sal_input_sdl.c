@@ -338,6 +338,7 @@ void in_sdl_HideMouse(void)
 	con_Print( "**********************" );
 	con_Print( "HIDING MOUSE HIDING MOUSE" );
 	con_Print( "**********************" );
+    return;
 	SDL_WM_GrabInput( SDL_GRAB_ON );
 	SDL_ShowCursor(SDL_DISABLE);
 }
@@ -350,6 +351,7 @@ void in_sdl_UnhideMouse(void)
 	con_Print( "**********************" );
 	con_Print( "SHOWING MOUSE SHOWING MOUSE" );
 	con_Print( "**********************" );
+    return;
 	SDL_WM_GrabInput( SDL_GRAB_OFF );
 	SDL_ShowCursor(SDL_ENABLE);
 }

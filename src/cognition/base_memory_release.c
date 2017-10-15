@@ -16,6 +16,8 @@
 // memory.c
 // Created 4-8-02 @ 1041 by Terrence Cole
 
+#ifndef DEBUG
+
 // Includes
 /////////////
 #include "cog_global.h"
@@ -98,3 +100,5 @@ void mem_PrintInfo( char *null )
 	con_Print( "------------------------------" );
 	con_Print( "Allocated Blocks:  %d blocks", num_blocks );
 }
+
+#endif // !DEBUG

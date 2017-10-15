@@ -16,6 +16,8 @@
 // memory.c
 // Created 4-8-02 @ 1041 by Terrence Cole
 
+#ifdef DEBUG
+
 // Includes
 /////////////
 #include "cog_global.h"
@@ -256,3 +258,5 @@ static void mem_Unlink( mem_block_t *mb )
 	mb->prev = NULL;
 	mb->next = NULL;
 }
+
+#endif // DEBUG

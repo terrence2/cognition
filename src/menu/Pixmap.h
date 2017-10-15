@@ -17,6 +17,7 @@
 
 // INCLUDES
 /////////////
+#include <string.h>
 #include "Widget.h"
 
 // NAMESPACE

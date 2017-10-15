@@ -16,6 +16,8 @@
 // sal_display_win.c
 // Created  by Terrence Cole
 
+#ifdef WIN32
+
 // Includes
 /////////////
 #include "cog_global.h"
@@ -193,3 +195,5 @@ int dis_CloseWindow( display_t *window )
 
 	return 1;
 }
+
+#endif // WIN32

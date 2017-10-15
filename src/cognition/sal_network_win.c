@@ -16,6 +16,8 @@
 // sv_network.c
 // Created 1-27-03 by Terrence Cole
 
+#ifdef WIN32
+
 // Includes
 /////////////
 #include "cog_global.h"
@@ -1265,3 +1267,5 @@ unsigned long int net_GetString( char *outBuf, byte *buf, int maxLen )
 
 	return a;
 }
+
+#endif // WIN32

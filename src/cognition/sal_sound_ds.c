@@ -16,6 +16,8 @@
 // sal_sound_win_ds.c
 // Created 6/27/03 by Terrence Cole
 
+#ifdef WIN32
+
 // Includes
 /////////////
 #include "cog_global.h"
@@ -959,3 +961,5 @@ static void s_ds_FillBuffer( snd_channel_t *ch, sndhandle handle )
 	ch->iFillPos += iSize1 + iSize2;
 	while( ch->iFillPos >= ch->iBufferSize ) ch->iFillPos -= ch->iBufferSize;
 }
+
+#endif // WIN32

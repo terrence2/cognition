@@ -16,6 +16,8 @@
 // sal_input_win_di.c
 // Created by Terrence Cole
 
+#ifdef WIN32
+
 // Includes
 /////////////
 #include "cog_global.h"
@@ -737,3 +739,4 @@ static void in_di_Reacquire()
     }
 }
 
+#endif

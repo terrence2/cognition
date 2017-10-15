@@ -37,7 +37,7 @@ void wrld_SetColor( char *color );
 //////////////////
 static void d_Wrld_DrawCubes( void );
 static void d_Wrld_DrawFlags( void );
-void d_DrawWorldEnds( void );
+static void d_DrawWorldEnds( void );
 
 // Global Variables
 ////////////////////

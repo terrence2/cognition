@@ -16,6 +16,8 @@
 // timesys.c
 // Created 2-25-02 @ 0053 by Terrence Cole
 
+#ifdef WIN32
+
 // Includes
 /////////////
 #include "cog_global.h"
@@ -105,3 +107,5 @@ double ts_GetSaneTime(void)
 {
 	return ((double)ts_GetTime() / 1000.0);
 }
+
+#endif // WIN32

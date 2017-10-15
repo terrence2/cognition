@@ -1,1 +1,4 @@
 main/
+*.swp
+*.swo
+runlog.txt

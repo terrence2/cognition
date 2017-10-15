@@ -16,6 +16,8 @@
 // system.c
 // Created 2-25-02 @ 1023 by Terrence Cole
 
+#ifdef WIN32
+
 // Includes
 /////////////
 #include "cog_global.h"
@@ -272,3 +274,5 @@ void sys_PrintSystemInformation()
 	con_Print( "\tVersion: %d.%d", versioninfo.dwMajorVersion, versioninfo.dwMinorVersion );
 	con_Print( "\tBuild: %d\n", versioninfo.dwBuildNumber );
 }
+
+#endif // WIN32

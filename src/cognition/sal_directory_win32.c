@@ -12,6 +12,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
+#ifdef WIN32
+
 // Includes
 /////////////
 #include "cog_global.h"
@@ -70,3 +72,6 @@ char** dir_scan( const char* path, const char* filter, int* count )
 	FindClose( hfile );
 
 	return number;
+}
+
+#endif // WIN32
